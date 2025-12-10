@@ -1,0 +1,7 @@
+{
+  "tutorialSidebar": [
+    { "type": "category", "label": "Chapter 1", "items": ["chapter1/intro"] },
+    { "type": "category", "label": "Chapter 2", "items": ["chapter2/intro"] },
+    { "type": "category", "label": "Chapter 3", "items": ["chapter3/intro"] }
+  ]
+}

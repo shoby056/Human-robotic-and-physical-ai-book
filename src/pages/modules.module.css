@@ -1,0 +1,153 @@
+/* =========================
+   Modules Page Styling
+   Dark + Light Mode Compatible
+   ========================= */
+
+/* Page container */
+.modulesPage {
+  padding: 2rem 0;
+  background: transparent !important; /* White background removed */
+}
+
+/* =========================
+   Page Title
+   ========================= */
+.pageTitle {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #c752c3, #6a11cb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* =========================
+   Page Description
+   ========================= */
+.pageDescription {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--ifm-color-emphasis-700);
+  margin-bottom: 3rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+/* =========================
+   Module Card (outer)
+   ========================= */
+.moduleCard {
+  padding: 1.5rem !important;
+  margin-bottom: 2rem;
+  animation: slideUp 0.5s ease-out;
+}
+
+.moduleCard:nth-child(1) { animation-delay: 0.1s; }
+.moduleCard:nth-child(2) { animation-delay: 0.2s; }
+.moduleCard:nth-child(3) { animation-delay: 0.3s; }
+.moduleCard:nth-child(4) { animation-delay: 0.4s; }
+.moduleCard:nth-child(5) { animation-delay: 0.5s; }
+
+.moduleCard:hover {
+  transform: translateY(-8px);
+}
+
+/* =========================
+   Card Inner (MAIN BOX)
+   ========================= */
+.cardInner {
+  background: var(--ifm-background-surface-color); /* auto light & dark mode */
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+/* DARK MODE CARD FIX */
+[data-theme='dark'] .cardInner {
+  background: #1b1b1d !important;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.45);
+  border-color: #333;
+}
+
+/* =========================
+   Module Title
+   ========================= */
+.moduleTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  color: var(--ifm-heading-color);
+  line-height: 1.4;
+}
+
+/* =========================
+   Module Description
+   ========================= */
+.moduleDescription {
+  font-size: 1rem;
+  color: var(--ifm-color-emphasis-700);
+  margin: 0 0 1.5rem 0;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+/* =========================
+   Module Button
+   ========================= */
+.moduleButton {
+  display: inline-block;
+  padding: 12px 24px;
+  background: linear-gradient(90deg, #c752c3, #6a11cb);
+  color: #fff !important;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-align: center;
+  align-self: flex-start;
+}
+
+.moduleButton:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
+  text-decoration: none;
+}
+
+/* =========================
+   Responsive Design
+   ========================= */
+@media (max-width: 996px) {
+  .moduleCard { margin-bottom: 1.5rem; }
+  .pageTitle { font-size: 2rem; }
+}
+
+@media (max-width: 768px) {
+  .moduleCard { padding: 1rem !important; }
+  .cardInner { padding: 1.25rem; }
+  .moduleTitle { font-size: 1.3rem; }
+  .pageTitle { font-size: 1.8rem; }
+  .pageDescription { font-size: 1.1rem; }
+}
+
+@media (max-width: 480px) {
+  .modulesPage { padding: 1.5rem 0; }
+  .pageTitle { font-size: 1.6rem; }
+  .moduleTitle { font-size: 1.2rem; }
+  .moduleDescription { font-size: 0.95rem; }
+}
+
+/* =========================
+   Animation
+   ========================= */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}

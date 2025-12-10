@@ -1,0 +1,172 @@
+.chapterLoaderContainer {
+  margin: 2rem 0;
+  width: 100%;
+}
+
+.startReadingButton {
+  display: inline-block;
+  padding: 16px 32px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #0066ff, #25c2a0);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0, 102, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.startReadingButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 102, 255, 0.4);
+  background: linear-gradient(135deg, #0056cc, #1fa588);
+}
+
+.startReadingButton:active {
+  transform: translateY(0);
+}
+
+.startReadingButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.startReadingButton.active {
+  background: linear-gradient(135deg, #25c2a0, #0066ff);
+}
+
+.modulesContainer, .chaptersContainer {
+  margin-top: 2rem;
+  width: 100%;
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.modulesTitle, .chaptersTitle {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #2c3e50;
+  font-weight: 700;
+}
+
+.modulesGrid, .chaptersGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.moduleCard, .chapterCard {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 1px solid #eaecef;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.moduleCard:hover, .chapterCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  border-color: #25c2a0;
+}
+
+.moduleTitle, .chapterTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  color: #2c3e50;
+  line-height: 1.4;
+}
+
+.moduleDescription, .chapterDescription {
+  font-size: 1rem;
+  color: #7f8c8d;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.moduleButton, .chapterButton {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #25c2a0;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  text-align: center;
+  align-self: flex-start;
+}
+
+.moduleButton:hover, .chapterButton:hover {
+  background: #21af90;
+  transform: translateX(3px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .modulesGrid, .chaptersGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .modulesTitle, .chaptersTitle {
+    font-size: 1.7rem;
+  }
+
+  .startReadingButton {
+    padding: 14px 24px;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .moduleCard, .chapterCard {
+    padding: 1.25rem;
+  }
+
+  .moduleTitle, .chapterTitle {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modulesContainer, .chaptersContainer {
+    padding: 0 1rem;
+  }
+
+  .startReadingButton {
+    max-width: 100%;
+  }
+}
+
+/* Animation for individual cards */
+.moduleCard, .chapterCard {
+  animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.moduleCard:nth-child(1), .chapterCard:nth-child(1) { animation-delay: 0.1s; }
+.moduleCard:nth-child(2), .chapterCard:nth-child(2) { animation-delay: 0.2s; }
+.moduleCard:nth-child(3), .chapterCard:nth-child(3) { animation-delay: 0.3s; }
+.moduleCard:nth-child(4), .chapterCard:nth-child(4) { animation-delay: 0.4s; }
+.moduleCard:nth-child(5), .chapterCard:nth-child(5) { animation-delay: 0.5s; }

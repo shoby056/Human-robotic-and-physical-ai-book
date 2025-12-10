@@ -1,0 +1,7 @@
+<!-- Placeholder image file for robot-header.png -->
+<!-- This is a SVG placeholder that will be replaced with actual image in deployment -->
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="400" fill="#25c2a0"/>
+  <text x="400" y="200" font-family="Arial" font-size="24" fill="white" text-anchor="middle">Robotics Textbook Header Image</text>
+  <circle cx="400" cy="150" r="50" fill="#ffffff" opacity="0.3"/>
+</svg>

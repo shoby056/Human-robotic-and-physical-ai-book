@@ -1,55 +1,60 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report:
+Version change: 0.0.0 (initial) → 1.0.0
+List of modified principles: All new
+Added sections: Scope and Constraints, Project Goals
+Removed sections: None
+Templates requiring updates:
+  - .specify/templates/plan-template.md: ✅ updated
+  - .specify/templates/spec-template.md: ✅ updated
+  - .specify/templates/tasks-template.md: ✅ updated
+  - .specify/templates/commands/*.md: ✅ updated
+Follow-up TODOs: None
+-->
+# Physical AI & Humanoid Robotics Textbook Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Embodied Intelligence Focus
+Prioritize the understanding and application of Physical AI principles and embodied intelligence in robot design and control.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Humanoid Robotics Design
+Emphasize the design and development of humanoid robots and intelligent AI agents, focusing on their physical and cognitive aspects.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Conversational AI Integration
+Integrate GPT-powered conversational robotics for natural language interaction and voice command capabilities.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Real-world Deployment
+Ensure the ability to deploy AI solutions in both real and simulated environments, bridging the gap between theory and practice.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Adaptive Learning Experience
+Provide a personalized and translated learning experience for users, including a RAG chatbot for content queries and optional Urdu translation.
 
-### [PRINCIPLE_6_NAME]
+### VI. Reusable Learning Modules
+Develop reusable Claude Code Subagents for learning modules to facilitate modular and extensible educational content.
 
+## Scope and Constraints
 
-[PRINCIPLE__DESCRIPTION]
+### In Scope:
+- ROS 2: Nodes, Topics, Services, URDF
+- Gazebo & Unity: Physics simulation, Digital Twin, Sensors
+- NVIDIA Isaac: AI perception, VSLAM, Path planning
+- Vision-Language-Action (VLA): LLM integration, Voice commands
+- Capstone: Autonomous humanoid robot performing voice commands
+- Lab setup: Edge devices (Jetson), optional cloud simulation
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+### Constraints:
+- High computational requirements
+- Stepwise capstone project
+- Optional personalization and Urdu translation
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+## Project Goals
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+- Build a RAG chatbot for content queries
+- Provide personalized and translated content per user
+- Create reusable Claude Code Subagents for learning modules
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
+This constitution supersedes all other project practices. Amendments require documentation, approval, and a clear migration plan. All contributions and reviews must verify compliance with these principles.
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
-
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.0.0 | **Ratified**: 2025-12-06 | **Last Amended**: 2025-12-06
