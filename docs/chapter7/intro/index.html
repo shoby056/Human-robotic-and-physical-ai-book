@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-chapter7/intro" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.1.0">
+<title data-rh="true">Chapter 7 - Human–Robot Collaboration | Physical AI &amp; Humanoid Robotics Textbook</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://your-docusaurus-site.example.com/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://your-docusaurus-site.example.com/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://your-docusaurus-site.example.com/docs/chapter7/intro"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" property="og:locale:alternate" content="ur"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Chapter 7 - Human–Robot Collaboration | Physical AI &amp; Humanoid Robotics Textbook"><meta data-rh="true" name="description" content="Overview"><meta data-rh="true" property="og:description" content="Overview"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://your-docusaurus-site.example.com/docs/chapter7/intro"><link data-rh="true" rel="alternate" href="https://your-docusaurus-site.example.com/docs/chapter7/intro" hreflang="en"><link data-rh="true" rel="alternate" href="https://your-docusaurus-site.example.com/ur/docs/chapter7/intro" hreflang="ur"><link data-rh="true" rel="alternate" href="https://your-docusaurus-site.example.com/docs/chapter7/intro" hreflang="x-default"><link rel="stylesheet" href="/assets/css/styles.3f0271e3.css">
+<script src="/assets/js/runtime~main.8a5a19b5.js" defer="defer"></script>
+<script src="/assets/js/main.2bd55a65.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.svg" alt="My Site Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/logo.svg" alt="My Site Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Physical AI &amp; Humanoid Robotics</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/chapter-select">Textbook</a><a class="navbar__item navbar__link" href="/modules">Modules</a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/facebook/docusaurus" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/chapter-select">Chapter Selection</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/all-modules">All Course Modules</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/chapter1/intro">Introduction</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/chapter2/intro">ROS 2 Fundamentals</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/chapter3/intro">Gazebo Simulation</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/chapter4/intro">Advanced Humanoid Robotics</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/chapter5/intro">AI in Physical Systems</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/chapter6/intro">Physical Intelligence Systems</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" href="/docs/chapter7/intro">Human–Robot Collaboration</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/chapter8/intro">Sensors, Perception &amp; Embodiment</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/chapter9/intro">Actuators, Locomotion &amp; Manipulation</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/chapter10/intro">Ethics, Safety &amp; Future of Humanoid Robotics</a></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">Human–Robot Collaboration</span><meta itemprop="position" content="1"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><h1>Chapter 7 - Human–Robot Collaboration</h1>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="overview">Overview<a href="#overview" class="hash-link" aria-label="Direct link to Overview" title="Direct link to Overview">​</a></h2>
+<p>Human-Robot Collaboration (HRC) represents a paradigm where humans and robots work together synergistically, leveraging each other&#x27;s strengths to accomplish tasks more effectively than either could alone. This chapter explores the principles, technologies, and methodologies that enable safe, efficient, and intuitive collaboration between humans and robotic systems.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="learning-objectives">Learning Objectives<a href="#learning-objectives" class="hash-link" aria-label="Direct link to Learning Objectives" title="Direct link to Learning Objectives">​</a></h2>
+<p>By the end of this chapter, you will be able to:</p>
+<ul>
+<li>Define Human-Robot Collaboration and distinguish it from traditional automation</li>
+<li>Analyze different models of human-robot interaction and cooperation</li>
+<li>Understand safety requirements and risk assessment in collaborative environments</li>
+<li>Evaluate communication modalities between humans and robots</li>
+<li>Design interfaces and protocols for effective human-robot teamwork</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="defining-human-robot-collaboration">Defining Human-Robot Collaboration<a href="#defining-human-robot-collaboration" class="hash-link" aria-label="Direct link to Defining Human-Robot Collaboration" title="Direct link to Defining Human-Robot Collaboration">​</a></h2>
+<p>Human-Robot Collaboration differs fundamentally from traditional industrial automation where humans and robots operate in separate, isolated workspaces. HRC involves:</p>
+<ul>
+<li><strong>Shared workspace</strong>: Humans and robots occupy the same physical space</li>
+<li><strong>Interdependence</strong>: Tasks require coordination between human and robot capabilities</li>
+<li><strong>Dynamic interaction</strong>: Real-time communication and adaptation</li>
+<li><strong>Mutual awareness</strong>: Both parties understand each other&#x27;s intentions and capabilities</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="collaboration-vs-cooperation-vs-coordination">Collaboration vs. Cooperation vs. Coordination<a href="#collaboration-vs-cooperation-vs-coordination" class="hash-link" aria-label="Direct link to Collaboration vs. Cooperation vs. Coordination" title="Direct link to Collaboration vs. Cooperation vs. Coordination">​</a></h3>
+<table><thead><tr><th>Concept</th><th>Definition</th><th>Example</th></tr></thead><tbody><tr><td>Coordination</td><td>Temporal or spatial organization of independent activities</td><td>Robot moves out of way when human enters workspace</td></tr><tr><td>Cooperation</td><td>Joint effort toward a common goal with assigned roles</td><td>Human holds object while robot assembles components</td></tr><tr><td>Collaboration</td><td>Flexible, adaptive interaction with shared decision-making</td><td>Human and robot negotiate task sequence based on situational factors</td></tr></tbody></table>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">COLLABORATION SPECTRUM:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Traditional Automation ──────► HRC ──────► Full Integration</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  │                          │           │</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  │ Separate spaces          │ Shared    │ Seamless</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  │ Sequential tasks         │ Interactive│ Partnership</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  │ Predictable roles        │ Adaptive  │ Mutual learning</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="models-of-human-robot-interaction">Models of Human-Robot Interaction<a href="#models-of-human-robot-interaction" class="hash-link" aria-label="Direct link to Models of Human-Robot Interaction" title="Direct link to Models of Human-Robot Interaction">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="complementary-model">Complementary Model<a href="#complementary-model" class="hash-link" aria-label="Direct link to Complementary Model" title="Direct link to Complementary Model">​</a></h3>
+<p>Humans and robots leverage their respective strengths:</p>
+<ul>
+<li><strong>Human strengths</strong>: Dexterity, adaptability, creativity, contextual understanding</li>
+<li><strong>Robot strengths</strong>: Precision, repeatability, strength, endurance, computation</li>
+</ul>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">TASK DISTRIBUTION:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">┌─────────────────────────────────────────────────────┐</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│                COMPLEMENTARY MODEL                  │</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">├─────────────────────────────────────────────────────┤</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│  HUMAN CAPABILITIES        ROBOT CAPABILITIES       │</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│  • Complex assembly        • Repetitive precision   │</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│  • Quality inspection      • Heavy lifting          │</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│  • Problem solving       • Continuous monitoring    │</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│  • Creative tasks          • High-speed operations  │</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">└─────────────────────────────────────────────────────┘</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="augmentation-model">Augmentation Model<a href="#augmentation-model" class="hash-link" aria-label="Direct link to Augmentation Model" title="Direct link to Augmentation Model">​</a></h3>
+<p>Robots enhance human capabilities rather than replace them:</p>
+<ul>
+<li>Exoskeletons for strength amplification</li>
+<li>Teleoperation systems for remote manipulation</li>
+<li>AR interfaces for enhanced perception</li>
+<li>Cognitive assistance for decision support</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="partnership-model">Partnership Model<a href="#partnership-model" class="hash-link" aria-label="Direct link to Partnership Model" title="Direct link to Partnership Model">​</a></h3>
+<p>Humans and robots share decision-making authority:</p>
+<ul>
+<li>Negotiated task allocation</li>
+<li>Shared situational awareness</li>
+<li>Joint problem-solving</li>
+<li>Mutual adaptation and learning</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="safety-considerations">Safety Considerations<a href="#safety-considerations" class="hash-link" aria-label="Direct link to Safety Considerations" title="Direct link to Safety Considerations">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="risk-assessment-framework">Risk Assessment Framework<a href="#risk-assessment-framework" class="hash-link" aria-label="Direct link to Risk Assessment Framework" title="Direct link to Risk Assessment Framework">​</a></h3>
+<p>Safety in HRC requires systematic evaluation of potential hazards:</p>
+<ol>
+<li><strong>Contact risks</strong>: Physical collision between human and robot</li>
+<li><strong>Pinch risks</strong>: Trapping between moving parts</li>
+<li><strong>Crush risks</strong>: Compression forces</li>
+<li><strong>Cut risks</strong>: Sharp edges or tools</li>
+<li><strong>Environmental risks</strong>: Hazards created by robot operations</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="safety-standards-and-regulations">Safety Standards and Regulations<a href="#safety-standards-and-regulations" class="hash-link" aria-label="Direct link to Safety Standards and Regulations" title="Direct link to Safety Standards and Regulations">​</a></h3>
+<ul>
+<li><strong>ISO/TS 15066</strong>: Guidelines for safe human-robot collaboration</li>
+<li><strong>ISO 10218</strong>: Safety requirements for industrial robots</li>
+<li><strong>ANSI/RIA 15.06</strong>: American national standard for robot safety</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="safety-technologies">Safety Technologies<a href="#safety-technologies" class="hash-link" aria-label="Direct link to Safety Technologies" title="Direct link to Safety Technologies">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="power-and-force-limiting">Power and Force Limiting<a href="#power-and-force-limiting" class="hash-link" aria-label="Direct link to Power and Force Limiting" title="Direct link to Power and Force Limiting">​</a></h4>
+<ul>
+<li>Inherently safe design with limited power output</li>
+<li>Force/torque sensors for contact detection</li>
+<li>Compliance control for safe interaction</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="speed-and-separation-monitoring">Speed and Separation Monitoring<a href="#speed-and-separation-monitoring" class="hash-link" aria-label="Direct link to Speed and Separation Monitoring" title="Direct link to Speed and Separation Monitoring">​</a></h4>
+<ul>
+<li>Safety-rated laser scanners</li>
+<li>Vision systems for human detection</li>
+<li>Dynamic speed adjustment based on proximity</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="collaborative-robots-cobots">Collaborative Robots (Cobots)<a href="#collaborative-robots-cobots" class="hash-link" aria-label="Direct link to Collaborative Robots (Cobots)" title="Direct link to Collaborative Robots (Cobots)">​</a></h4>
+<ul>
+<li>Integrated safety features</li>
+<li>Lightweight construction</li>
+<li>Enclosed joints and rounded edges</li>
+<li>Programmable safety zones</li>
+</ul>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">SAFETY ZONE CLASSIFICATION:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">┌─────────────────────────────────────────────────────┐</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│ Zone Type │ Distance │ Action                       │</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">├─────────────────────────────────────────────────────┤</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│ Safety Zone │ &gt; 2m   │ Normal operation            │</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│ Warning Zone│ 1-2m   │ Reduced speed               │</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│ Caution Zone│ &lt;1m    │ Restricted movement         │</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│ Stop Zone   │ &lt;0.5m  │ Immediate stop              │</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">└─────────────────────────────────────────────────────┘</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="communication-modalities">Communication Modalities<a href="#communication-modalities" class="hash-link" aria-label="Direct link to Communication Modalities" title="Direct link to Communication Modalities">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="unidirectional-communication">Unidirectional Communication<a href="#unidirectional-communication" class="hash-link" aria-label="Direct link to Unidirectional Communication" title="Direct link to Unidirectional Communication">​</a></h3>
+<p>Information flows in one direction:</p>
+<ul>
+<li><strong>Robot to Human</strong>: Status indicators, warnings, progress updates</li>
+<li><strong>Human to Robot</strong>: Commands, goals, preferences</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="bidirectional-communication">Bidirectional Communication<a href="#bidirectional-communication" class="hash-link" aria-label="Direct link to Bidirectional Communication" title="Direct link to Bidirectional Communication">​</a></h3>
+<p>Interactive exchange of information:</p>
+<ul>
+<li>Query-response cycles</li>
+<li>Negotiation protocols</li>
+<li>Collaborative decision-making</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="communication-channels">Communication Channels<a href="#communication-channels" class="hash-link" aria-label="Direct link to Communication Channels" title="Direct link to Communication Channels">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="visual-communication">Visual Communication<a href="#visual-communication" class="hash-link" aria-label="Direct link to Visual Communication" title="Direct link to Visual Communication">​</a></h4>
+<ul>
+<li>LED indicators and displays</li>
+<li>Projection mapping</li>
+<li>Gesture recognition and reproduction</li>
+<li>Augmented reality overlays</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="auditory-communication">Auditory Communication<a href="#auditory-communication" class="hash-link" aria-label="Direct link to Auditory Communication" title="Direct link to Auditory Communication">​</a></h4>
+<ul>
+<li>Speech synthesis and recognition</li>
+<li>Sound alerts and notifications</li>
+<li>Spatial audio cues</li>
+<li>Musical interfaces</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="haptic-communication">Haptic Communication<a href="#haptic-communication" class="hash-link" aria-label="Direct link to Haptic Communication" title="Direct link to Haptic Communication">​</a></h4>
+<ul>
+<li>Force feedback during teleoperation</li>
+<li>Vibrotactile alerts</li>
+<li>Physical guidance cues</li>
+<li>Texture simulation</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="interface-design-principles">Interface Design Principles<a href="#interface-design-principles" class="hash-link" aria-label="Direct link to Interface Design Principles" title="Direct link to Interface Design Principles">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="intuitive-interaction">Intuitive Interaction<a href="#intuitive-interaction" class="hash-link" aria-label="Direct link to Intuitive Interaction" title="Direct link to Intuitive Interaction">​</a></h3>
+<p>Interfaces should leverage natural human behaviors:</p>
+<ul>
+<li><strong>Spatial mapping</strong>: Robot movements correspond to human expectations</li>
+<li><strong>Temporal alignment</strong>: Robot actions synchronized with human intentions</li>
+<li><strong>Predictability</strong>: Consistent robot behavior patterns</li>
+<li><strong>Transparency</strong>: Clear indication of robot state and intentions</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="trust-building">Trust Building<a href="#trust-building" class="hash-link" aria-label="Direct link to Trust Building" title="Direct link to Trust Building">​</a></h3>
+<p>Trust is essential for effective collaboration:</p>
+<ul>
+<li><strong>Reliability</strong>: Consistent performance over time</li>
+<li><strong>Explainability</strong>: Robot can justify its actions</li>
+<li><strong>Competence</strong>: Demonstrates capability for assigned tasks</li>
+<li><strong>Intentionality</strong>: Clear communication of goals and plans</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="adaptive-interfaces">Adaptive Interfaces<a href="#adaptive-interfaces" class="hash-link" aria-label="Direct link to Adaptive Interfaces" title="Direct link to Adaptive Interfaces">​</a></h3>
+<p>Systems that adjust to individual users and contexts:</p>
+<ul>
+<li>Personalized interaction preferences</li>
+<li>Learning from user behavior</li>
+<li>Context-aware interface adjustments</li>
+<li>Accessibility accommodations</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="collaborative-task-planning">Collaborative Task Planning<a href="#collaborative-task-planning" class="hash-link" aria-label="Direct link to Collaborative Task Planning" title="Direct link to Collaborative Task Planning">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="task-decomposition-strategies">Task Decomposition Strategies<a href="#task-decomposition-strategies" class="hash-link" aria-label="Direct link to Task Decomposition Strategies" title="Direct link to Task Decomposition Strategies">​</a></h3>
+<p>Breaking complex tasks into human-robot subtasks:</p>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="functional-decomposition">Functional Decomposition<a href="#functional-decomposition" class="hash-link" aria-label="Direct link to Functional Decomposition" title="Direct link to Functional Decomposition">​</a></h4>
+<ul>
+<li>Tasks divided by functional requirements</li>
+<li>Each party handles tasks matching their capabilities</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="sequential-decomposition">Sequential Decomposition<a href="#sequential-decomposition" class="hash-link" aria-label="Direct link to Sequential Decomposition" title="Direct link to Sequential Decomposition">​</a></h4>
+<ul>
+<li>Tasks arranged in temporal sequence</li>
+<li>Handoff points between human and robot</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="hierarchical-decomposition">Hierarchical Decomposition<a href="#hierarchical-decomposition" class="hash-link" aria-label="Direct link to Hierarchical Decomposition" title="Direct link to Hierarchical Decomposition">​</a></h4>
+<ul>
+<li>High-level planning by human</li>
+<li>Low-level execution by robot</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="intent-recognition-and-prediction">Intent Recognition and Prediction<a href="#intent-recognition-and-prediction" class="hash-link" aria-label="Direct link to Intent Recognition and Prediction" title="Direct link to Intent Recognition and Prediction">​</a></h3>
+<p>Understanding human intentions enables proactive collaboration:</p>
+<ul>
+<li><strong>Behavioral analysis</strong>: Pattern recognition in human movements</li>
+<li><strong>Context awareness</strong>: Environmental and task context interpretation</li>
+<li><strong>Goal inference</strong>: Deduction of underlying objectives</li>
+<li><strong>Action prediction</strong>: Anticipation of future human actions</li>
+</ul>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">INTENT RECOGNITION PIPELINE:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">┌─────────────┐    ┌─────────────┐    ┌─────────────┐</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│  OBSERVATION│───▶│  INTERPRET  │───▶│  PREDICT    │</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│             │    │             │    │             │</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│ • Eye gaze  │    │ • Intention │    │ • Next      │</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│ • Motion    │    │ • Goal      │    │   action    │</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│ • Physio.   │    │ • Effort    │    │ • Timeline  │</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">└─────────────┘    └─────────────┘    └─────────────┘</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="technologies-enabling-hrc">Technologies Enabling HRC<a href="#technologies-enabling-hrc" class="hash-link" aria-label="Direct link to Technologies Enabling HRC" title="Direct link to Technologies Enabling HRC">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="sensing-technologies">Sensing Technologies<a href="#sensing-technologies" class="hash-link" aria-label="Direct link to Sensing Technologies" title="Direct link to Sensing Technologies">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="environment-perception">Environment Perception<a href="#environment-perception" class="hash-link" aria-label="Direct link to Environment Perception" title="Direct link to Environment Perception">​</a></h4>
+<ul>
+<li>3D cameras and depth sensors</li>
+<li>LIDAR for spatial mapping</li>
+<li>Thermal imaging for safety monitoring</li>
+<li>Acoustic sensors for environmental awareness</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="human-state-monitoring">Human State Monitoring<a href="#human-state-monitoring" class="hash-link" aria-label="Direct link to Human State Monitoring" title="Direct link to Human State Monitoring">​</a></h4>
+<ul>
+<li>Physiological sensors (heart rate, skin conductance)</li>
+<li>Biometric identification</li>
+<li>Stress and fatigue detection</li>
+<li>Attention and engagement measurement</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="machine-learning-in-hrc">Machine Learning in HRC<a href="#machine-learning-in-hrc" class="hash-link" aria-label="Direct link to Machine Learning in HRC" title="Direct link to Machine Learning in HRC">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="social-signal-processing">Social Signal Processing<a href="#social-signal-processing" class="hash-link" aria-label="Direct link to Social Signal Processing" title="Direct link to Social Signal Processing">​</a></h4>
+<ul>
+<li>Recognition of social cues and norms</li>
+<li>Emotion detection and response</li>
+<li>Personality modeling</li>
+<li>Cultural adaptation</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="collaborative-learning">Collaborative Learning<a href="#collaborative-learning" class="hash-link" aria-label="Direct link to Collaborative Learning" title="Direct link to Collaborative Learning">​</a></h4>
+<ul>
+<li>Learning from demonstration by human partners</li>
+<li>Multi-agent reinforcement learning</li>
+<li>Shared experience databases</li>
+<li>Transfer learning between collaborations</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="applications-and-domains">Applications and Domains<a href="#applications-and-domains" class="hash-link" aria-label="Direct link to Applications and Domains" title="Direct link to Applications and Domains">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="manufacturing">Manufacturing<a href="#manufacturing" class="hash-link" aria-label="Direct link to Manufacturing" title="Direct link to Manufacturing">​</a></h3>
+<ul>
+<li>Assembly line collaboration</li>
+<li>Quality inspection partnerships</li>
+<li>Maintenance and repair assistance</li>
+<li>Logistics and material handling</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="healthcare">Healthcare<a href="#healthcare" class="hash-link" aria-label="Direct link to Healthcare" title="Direct link to Healthcare">​</a></h3>
+<ul>
+<li>Surgical assistance and telepresence</li>
+<li>Rehabilitation and therapy support</li>
+<li>Elderly care and assistance</li>
+<li>Medical training and simulation</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="service-industries">Service Industries<a href="#service-industries" class="hash-link" aria-label="Direct link to Service Industries" title="Direct link to Service Industries">​</a></h3>
+<ul>
+<li>Customer service and hospitality</li>
+<li>Retail assistance and inventory</li>
+<li>Cleaning and maintenance</li>
+<li>Educational support</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="research-and-exploration">Research and Exploration<a href="#research-and-exploration" class="hash-link" aria-label="Direct link to Research and Exploration" title="Direct link to Research and Exploration">​</a></h3>
+<ul>
+<li>Scientific experimentation assistance</li>
+<li>Hazardous environment exploration</li>
+<li>Space mission support</li>
+<li>Deep-sea operations</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="challenges-and-future-directions">Challenges and Future Directions<a href="#challenges-and-future-directions" class="hash-link" aria-label="Direct link to Challenges and Future Directions" title="Direct link to Challenges and Future Directions">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="technical-challenges">Technical Challenges<a href="#technical-challenges" class="hash-link" aria-label="Direct link to Technical Challenges" title="Direct link to Technical Challenges">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="perception-and-understanding">Perception and Understanding<a href="#perception-and-understanding" class="hash-link" aria-label="Direct link to Perception and Understanding" title="Direct link to Perception and Understanding">​</a></h4>
+<ul>
+<li>Real-time scene understanding</li>
+<li>Context-aware interpretation</li>
+<li>Ambiguity resolution</li>
+<li>Multimodal integration</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="planning-and-control">Planning and Control<a href="#planning-and-control" class="hash-link" aria-label="Direct link to Planning and Control" title="Direct link to Planning and Control">​</a></h4>
+<ul>
+<li>Real-time replanning under uncertainty</li>
+<li>Safe motion planning in dynamic environments</li>
+<li>Scalable multi-agent coordination</li>
+<li>Long-term collaboration sustainability</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_LWe7" id="human-factors">Human Factors<a href="#human-factors" class="hash-link" aria-label="Direct link to Human Factors" title="Direct link to Human Factors">​</a></h4>
+<ul>
+<li>Individual differences accommodation</li>
+<li>Cultural sensitivity</li>
+<li>Learning curve minimization</li>
+<li>Error recovery and forgiveness</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="ethical-considerations">Ethical Considerations<a href="#ethical-considerations" class="hash-link" aria-label="Direct link to Ethical Considerations" title="Direct link to Ethical Considerations">​</a></h3>
+<ul>
+<li>Job displacement concerns</li>
+<li>Privacy and surveillance issues</li>
+<li>Human dignity preservation</li>
+<li>Responsibility attribution in accidents</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="chapter-summary">Chapter Summary<a href="#chapter-summary" class="hash-link" aria-label="Direct link to Chapter Summary" title="Direct link to Chapter Summary">​</a></h2>
+<p>Human-Robot Collaboration represents a transformative approach to integrating robotic systems into human-centered environments. By focusing on safety, communication, and intuitive interaction, HRC enables synergistic partnerships that leverage the complementary strengths of humans and robots. Success in HRC requires careful attention to technical, social, and ethical considerations to create systems that truly enhance human capabilities rather than merely replacing human functions.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="exercises">Exercises<a href="#exercises" class="hash-link" aria-label="Direct link to Exercises" title="Direct link to Exercises">​</a></h2>
+<ol>
+<li>Design a safety protocol for a collaborative assembly task involving both humans and robots.</li>
+<li>Compare different communication modalities for conveying robot intentions to human collaborators.</li>
+<li>Analyze the challenges of trust-building in human-robot teams.</li>
+<li>Propose a task decomposition strategy for a complex manufacturing process.</li>
+<li>Discuss the ethical implications of replacing human workers with collaborative robots.</li>
+</ol></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="theme-doc-footer-edit-meta-row row"><div class="col"><a href="https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/chapter7/intro.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_vwxv"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/chapter6/intro"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Physical Intelligence Systems</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/chapter8/intro"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Sensors, Perception &amp; Embodiment</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#overview" class="table-of-contents__link toc-highlight">Overview</a></li><li><a href="#learning-objectives" class="table-of-contents__link toc-highlight">Learning Objectives</a></li><li><a href="#defining-human-robot-collaboration" class="table-of-contents__link toc-highlight">Defining Human-Robot Collaboration</a><ul><li><a href="#collaboration-vs-cooperation-vs-coordination" class="table-of-contents__link toc-highlight">Collaboration vs. Cooperation vs. Coordination</a></li></ul></li><li><a href="#models-of-human-robot-interaction" class="table-of-contents__link toc-highlight">Models of Human-Robot Interaction</a><ul><li><a href="#complementary-model" class="table-of-contents__link toc-highlight">Complementary Model</a></li><li><a href="#augmentation-model" class="table-of-contents__link toc-highlight">Augmentation Model</a></li><li><a href="#partnership-model" class="table-of-contents__link toc-highlight">Partnership Model</a></li></ul></li><li><a href="#safety-considerations" class="table-of-contents__link toc-highlight">Safety Considerations</a><ul><li><a href="#risk-assessment-framework" class="table-of-contents__link toc-highlight">Risk Assessment Framework</a></li><li><a href="#safety-standards-and-regulations" class="table-of-contents__link toc-highlight">Safety Standards and Regulations</a></li><li><a href="#safety-technologies" class="table-of-contents__link toc-highlight">Safety Technologies</a></li></ul></li><li><a href="#communication-modalities" class="table-of-contents__link toc-highlight">Communication Modalities</a><ul><li><a href="#unidirectional-communication" class="table-of-contents__link toc-highlight">Unidirectional Communication</a></li><li><a href="#bidirectional-communication" class="table-of-contents__link toc-highlight">Bidirectional Communication</a></li><li><a href="#communication-channels" class="table-of-contents__link toc-highlight">Communication Channels</a></li></ul></li><li><a href="#interface-design-principles" class="table-of-contents__link toc-highlight">Interface Design Principles</a><ul><li><a href="#intuitive-interaction" class="table-of-contents__link toc-highlight">Intuitive Interaction</a></li><li><a href="#trust-building" class="table-of-contents__link toc-highlight">Trust Building</a></li><li><a href="#adaptive-interfaces" class="table-of-contents__link toc-highlight">Adaptive Interfaces</a></li></ul></li><li><a href="#collaborative-task-planning" class="table-of-contents__link toc-highlight">Collaborative Task Planning</a><ul><li><a href="#task-decomposition-strategies" class="table-of-contents__link toc-highlight">Task Decomposition Strategies</a></li><li><a href="#intent-recognition-and-prediction" class="table-of-contents__link toc-highlight">Intent Recognition and Prediction</a></li></ul></li><li><a href="#technologies-enabling-hrc" class="table-of-contents__link toc-highlight">Technologies Enabling HRC</a><ul><li><a href="#sensing-technologies" class="table-of-contents__link toc-highlight">Sensing Technologies</a></li><li><a href="#machine-learning-in-hrc" class="table-of-contents__link toc-highlight">Machine Learning in HRC</a></li></ul></li><li><a href="#applications-and-domains" class="table-of-contents__link toc-highlight">Applications and Domains</a><ul><li><a href="#manufacturing" class="table-of-contents__link toc-highlight">Manufacturing</a></li><li><a href="#healthcare" class="table-of-contents__link toc-highlight">Healthcare</a></li><li><a href="#service-industries" class="table-of-contents__link toc-highlight">Service Industries</a></li><li><a href="#research-and-exploration" class="table-of-contents__link toc-highlight">Research and Exploration</a></li></ul></li><li><a href="#challenges-and-future-directions" class="table-of-contents__link toc-highlight">Challenges and Future Directions</a><ul><li><a href="#technical-challenges" class="table-of-contents__link toc-highlight">Technical Challenges</a></li><li><a href="#ethical-considerations" class="table-of-contents__link toc-highlight">Ethical Considerations</a></li></ul></li><li><a href="#chapter-summary" class="table-of-contents__link toc-highlight">Chapter Summary</a></li><li><a href="#exercises" class="table-of-contents__link toc-highlight">Exercises</a></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/chapter-select">Textbook</a></li></ul></div><div class="col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://stackoverflow.com/questions/tagged/docusaurus" target="_blank" rel="noopener noreferrer" class="footer__link-item">Stack Overflow<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://discordapp.com/invite/docusaurus" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://twitter.com/docusaurus" target="_blank" rel="noopener noreferrer" class="footer__link-item">Twitter<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/facebook/docusaurus" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 My Project, Inc. Built with Docusaurus.</div></div></div></footer><div class="chatbotContainer_QNYG undefined"><button class="chatButton_evOr undefined" aria-label="Open chat">🤖</button></div></div>
+</body>
+</html>
