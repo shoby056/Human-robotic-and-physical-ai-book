@@ -1,6 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styles from './Chatbot.module.css';
-import { API_ENDPOINTS } from '../config/api';
+
+// Dynamically import API endpoints to avoid potential issues during SSR
+let API_ENDPOINTS;
+try {
+  // Attempt to import API endpoints
+  const apiModule = require('../config/api');
+  API_ENDPOINTS = apiModule.API_ENDPOINTS;
+} catch (error) {
+  // Fallback API endpoints in case of import issues
+  const API_BASE_URL = 'http://localhost:8000';
+  API_ENDPOINTS = {
+    CHAT: `${API_BASE_URL}/api/chat/chat`,
+    INDEX_CONTENT: `${API_BASE_URL}/api/chat/index-content`,
+    HEALTH_CHECK: `${API_BASE_URL}/api/chat/health-check`,
+  };
+}
 
 const Chatbot = ({ isFloating = true }) => {
   const [isOpen, setIsOpen] = useState(false);

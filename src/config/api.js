@@ -1,9 +1,16 @@
 // API Configuration
-// For Docusaurus, use a static configuration or check for window object safely
-const API_BASE_URL = 'http://localhost:8000'; // Default API URL
+// For Docusaurus, use a static configuration with fallbacks for safety
+const getAPIBaseUrl = () => {
+  if (typeof window !== 'undefined') {
+    // Browser environment
+    return window.ENV?.REACT_APP_API_URL || 'http://localhost:8000';
+  } else {
+    // Server environment during build
+    return process?.env?.REACT_APP_API_URL || 'http://localhost:8000';
+  }
+};
 
-// Optional: You can also read from a global variable that can be set in docusaurus.config.js
-// const API_BASE_URL = (typeof window !== 'undefined' && window.API_BASE_URL) ? window.API_BASE_URL : 'http://localhost:8000';
+const API_BASE_URL = getAPIBaseUrl();
 
 export const API_ENDPOINTS = {
   CHAT: `${API_BASE_URL}/api/chat/chat`,
