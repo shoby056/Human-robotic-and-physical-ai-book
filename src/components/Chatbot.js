@@ -64,6 +64,35 @@ const Chatbot = ({ isFloating = true }) => {
     setError(null);
 
     try {
+      // Format history to ensure proper data types for backend, only include defined fields
+      const formattedHistory = messages.slice(-10).map(msg => {
+        const formattedMsg = {
+          id: String(msg.id), // Convert ID to string
+          text: msg.text || '',
+          sender: msg.sender || 'user',
+        };
+
+        // Only add optional fields if they exist and are not undefined/null
+        if (msg.timestamp) {
+          formattedMsg.timestamp = new Date(msg.timestamp).toISOString();
+        }
+        if (msg.sources && Array.isArray(msg.sources) && msg.sources.length > 0) {
+          formattedMsg.sources = msg.sources.map(s => String(s));
+        } else if (msg.sources && !Array.isArray(msg.sources)) {
+          formattedMsg.sources = [String(msg.sources)];
+        }
+        // Only include confidence if it has a value
+        if (msg.confidence !== undefined && msg.confidence !== null) {
+          formattedMsg.confidence = String(msg.confidence);
+        }
+        // Only include tokens_used if it has a value
+        if (msg.tokens_used !== undefined && msg.tokens_used !== null) {
+          formattedMsg.tokens_used = String(msg.tokens_used);
+        }
+
+        return formattedMsg;
+      });
+
       // Call the backend API with conversation history
       const response = await fetch(API_ENDPOINTS.CHAT, {
         method: 'POST',
@@ -72,7 +101,7 @@ const Chatbot = ({ isFloating = true }) => {
         },
         body: JSON.stringify({
           query: inputValue,
-          history: messages.slice(-10), // Send last 10 messages as context
+          history: formattedHistory, // Send last 10 messages as context
           user_id: null
         }),
       });
@@ -90,10 +119,30 @@ const Chatbot = ({ isFloating = true }) => {
         };
         setMessages(prev => [...prev, botMessage]);
       } else {
-        const errorData = await response.json();
+        let errorDetail = 'Unknown error';
+        try {
+          const errorData = await response.json();
+          // Handle both string and object error details
+          if (typeof errorData.detail === 'string') {
+            errorDetail = errorData.detail;
+          } else if (typeof errorData.detail === 'object') {
+            errorDetail = JSON.stringify(errorData.detail) || 'Error object received';
+          } else {
+            errorDetail = String(errorData.detail || 'Unknown error');
+          }
+        } catch (parseError) {
+          // If parsing fails, use the raw response text
+          try {
+            const errorText = await response.text();
+            errorDetail = errorText || 'Error occurred but no details available';
+          } catch {
+            errorDetail = 'Error occurred but could not parse details';
+          }
+        }
+
         const errorMessage = {
           id: Date.now() + 1,
-          text: `Sorry, I encountered an error: ${errorData.detail || 'Unknown error'}`,
+          text: `Sorry, I encountered an error: ${errorDetail}`,
           sender: 'bot',
           timestamp: new Date()
         };
@@ -101,14 +150,27 @@ const Chatbot = ({ isFloating = true }) => {
       }
     } catch (error) {
       console.error('Chat error:', error);
+      // Format error message to ensure it's always a string
+      let errorMessageText = 'Sorry, I\'m having trouble connecting to the server. Please check your connection and try again.';
+
+      if (error && typeof error === 'object') {
+        if (error.message) {
+          errorMessageText = `Sorry, I encountered an error: ${error.message}`;
+        } else {
+          errorMessageText = `Sorry, I encountered an error: ${JSON.stringify(error)}`;
+        }
+      } else if (typeof error === 'string') {
+        errorMessageText = `Sorry, I encountered an error: ${error}`;
+      }
+
       const errorMessage = {
         id: Date.now() + 1,
-        text: 'Sorry, I\'m having trouble connecting to the server. Please check your connection and try again.',
+        text: errorMessageText,
         sender: 'bot',
         timestamp: new Date()
       };
       setMessages(prev => [...prev, errorMessage]);
-      setError(error.message);
+      setError(errorMessageText);
     } finally {
       setIsLoading(false);
     }
@@ -165,8 +227,6 @@ const Chatbot = ({ isFloating = true }) => {
                 <ul>
                   <li><strong>Short Answer</strong></li>
                   <li><strong>Deep Explanation</strong></li>
-                  <li><strong>Steps</strong> (if relevant)</li>
-                  <li><strong>Code</strong> (if relevant)</li>
                   <li><strong>Summary</strong></li>
                 </ul>
               </div>
@@ -179,7 +239,11 @@ const Chatbot = ({ isFloating = true }) => {
                   <div className={styles.messageText}>{message.text}</div>
                   {(message.sources && message.sources.length > 0) && (
                     <div className={styles.sources}>
-                      <small>Sources: {message.sources.slice(0, 3).join(', ')}{message.sources.length > 3 ? '...' : ''}</small>
+                      <small>Sources: {message.sources.slice(0, 3).map(source =>
+                        typeof source === 'string' ? source :
+                        source.toString ? source.toString() :
+                        JSON.stringify(source)
+                      ).join(', ')}{message.sources.length > 3 ? '...' : ''}</small>
                     </div>
                   )}
                   {message.tokens_used && (
@@ -204,7 +268,7 @@ const Chatbot = ({ isFloating = true }) => {
 
           {error && (
             <div className={styles.errorMessage}>
-              Error: {error}
+              Error: {typeof error === 'string' ? error : error?.toString ? error.toString() : JSON.stringify(error)}
             </div>
           )}
 

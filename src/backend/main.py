@@ -1,14 +1,22 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-# Import routers - using absolute imports that work when src is in PYTHONPATH
+# Import routers using relative imports to work correctly when running the module
 try:
-    from src.backend.chatbot import router as chatbot_router
-    from src.backend.auth import router as auth_router
-except ImportError:
-    # Fallback for relative imports when running as module
     from .chatbot import router as chatbot_router
     from .auth import router as auth_router
+except ImportError:
+    # Fallback for absolute imports when running from project root
+    try:
+        from src.backend.chatbot import router as chatbot_router
+        from src.backend.auth import router as auth_router
+    except ImportError:
+        # Last resort - direct import for standalone execution
+        import sys
+        import os
+        sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+        from backend.chatbot import router as chatbot_router
+        from backend.auth import router as auth_router
 
 app = FastAPI(title="Physical AI & Humanoid Robotics Textbook API", version="1.0.0")
 
@@ -38,4 +46,4 @@ async def health():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8001)

@@ -50,6 +50,19 @@ const config = {
   // Static directories configuration
   staticDirectories: ['static'],
 
+  // Custom fields for development server configuration for API proxy
+  customFields: {
+    devServer: {
+      proxy: {
+        '/api': {
+          target: 'http://localhost:8000',
+          changeOrigin: true,
+          secure: false,
+        },
+      },
+    },
+  },
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -72,6 +85,31 @@ const config = {
             to: '/modules',
             label: 'Modules',
             position: 'left',
+          },
+          {
+            to: '/personalized',
+            label: 'Personalized',
+            position: 'left',
+          },
+          {
+            to: '/urdu',
+            label: 'Urdu',
+            position: 'left',
+          },
+          {
+            to: '/signup',
+            label: 'Sign Up',
+            position: 'right',
+          },
+          {
+            to: '/signin',
+            label: 'Sign In',
+            position: 'right',
+          },
+          {
+            to: '/profile',
+            label: 'Profile',
+            position: 'right',
           },
           {
             href: 'https://github.com/facebook/docusaurus',

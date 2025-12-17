@@ -1,6 +1,6 @@
 from fastapi import APIRouter, HTTPException, Depends
 from pydantic import BaseModel
-from typing import List, Optional, Dict, Any
+from typing import List, Optional, Dict, Any, Union
 import os
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import PromptTemplate
@@ -26,11 +26,26 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 print("OpenAI Key Loaded:", openai.api_key is not None)
 
 
+class MessageHistoryItem(BaseModel):
+    id: Union[str, int]
+    text: str
+    sender: str
+    timestamp: Optional[str] = None
+    sources: Optional[List[str]] = []
+    confidence: Optional[float] = None
+    tokens_used: Optional[int] = None
+
+    model_config = {
+        'arbitrary_types_allowed': True,
+        'extra': 'ignore'
+    }
+
+
 class ChatRequest(BaseModel):
     query: str
     context: Optional[str] = None
     user_id: Optional[str] = None
-    history: List[Dict[str, str]] = []
+    history: List[MessageHistoryItem] = []
 
 class ChatResponse(BaseModel):
     response: str
@@ -117,7 +132,7 @@ class ChatbotService:
             logger.error(f"Error querying content: {str(e)}")
             return ["Error retrieving content from the textbook."], []
 
-    async def get_response(self, query: str, history: List[Dict[str, str]] = None) -> ChatResponse:
+    async def get_response(self, query: str, history: List[MessageHistoryItem] = None) -> ChatResponse:
         """Generate a response to the user's query using RAG."""
         try:
             if history is None:
@@ -131,7 +146,7 @@ class ChatbotService:
             full_context = f"""
             You are CCR, an AI assistant for the Physical AI & Humanoid Robotics textbook.
             Answer questions based on the provided context and textbook knowledge.
-            Follow the format: (1) Short Answer, (2) Deep Explanation, (3) Steps if relevant, (4) Code if relevant, (5) Summary.
+            Follow the format: Short Answer, Deep Explanation, Summary.
 
             Context from textbook:
             {context_str}
@@ -141,8 +156,8 @@ class ChatbotService:
 
             # Add conversation history
             for msg in history[-5:]:  # Use last 5 messages as context
-                role = msg.get("sender", "user")
-                text = msg.get("text", "")
+                role = getattr(msg, 'sender', 'user') if hasattr(msg, 'sender') else msg.get("sender", "user") if isinstance(msg, dict) else "user"
+                text = getattr(msg, 'text', '') if hasattr(msg, 'text') else msg.get("text", "") if isinstance(msg, dict) else ""
                 full_context += f"\n{role}: {text}"
 
             # Add the current question
@@ -150,13 +165,18 @@ class ChatbotService:
 
             # Prepare messages for OpenAI
             messages = [
-                {"role": "system", "content": "You are CCR, an AI assistant for the Physical AI & Humanoid Robotics textbook. Answer questions based on the provided context and textbook knowledge. Follow the format: (1) Short Answer, (2) Deep Explanation, (3) Steps if relevant, (4) Code if relevant, (5) Summary. Always be accurate, helpful, and educational."},
+                {"role": "system", "content": "You are CCR, an AI assistant for the Physical AI & Humanoid Robotics textbook. Answer questions based on the provided context and textbook knowledge. Follow the format: Short Answer, Deep Explanation, Summary. Always be accurate, helpful, and educational."},
             ]
 
             # Add conversation history
             for msg in history[-10:]:  # Limit to last 10 messages
-                role = "user" if msg.get("sender") == "user" else "assistant"
-                content = msg.get("text", "")
+                if isinstance(msg, dict):
+                    role = "user" if msg.get("sender") == "user" else "assistant"
+                    content = msg.get("text", "")
+                else:
+                    # Handle Pydantic model instance
+                    role = "user" if getattr(msg, 'sender', 'user') == "user" else "assistant"
+                    content = getattr(msg, 'text', "")
                 messages.append({"role": role, "content": content})
 
             # Add the current question
@@ -173,11 +193,24 @@ class ChatbotService:
             answer = response.choices[0].message.content
             tokens_used = response.usage.total_tokens if response.usage else 0
 
+            # Ensure the response follows the required format (Short Answer, Deep Explanation, Summary)
+            formatted_answer = self.ensure_response_format(answer)
+
             return ChatResponse(
-                response=answer,
+                response=formatted_answer,
                 sources=sources,
                 confidence=0.85,  # This would be calculated based on similarity scores in a full implementation
                 tokens_used=tokens_used
+            )
+        except openai.APIError as api_error:
+            logger.error(f"OpenAI API error: {str(api_error)}")
+            # Provide a more sophisticated fallback response
+            fallback_response = await self.get_fallback_response(query, context_str)
+            return ChatResponse(
+                response=fallback_response,
+                sources=sources,
+                confidence=0.5,  # Lower confidence for fallback
+                tokens_used=0
             )
         except Exception as e:
             logger.error(f"Error generating chatbot response: {str(e)}")
@@ -187,6 +220,86 @@ class ChatbotService:
                 confidence=0.0,
                 tokens_used=0
             )
+
+    async def get_fallback_response(self, query: str, context: str = "") -> str:
+        """
+        Provide a fallback response when OpenAI API is unavailable.
+        This method implements simple keyword matching for common textbook topics.
+        All responses follow the required format: Short Answer, Deep Explanation, Summary
+        """
+        query_lower = query.lower()
+
+        # Define some basic responses for common queries about Physical AI & Humanoid Robotics
+        if any(keyword in query_lower for keyword in ["hello", "hi", "hey", "greetings"]):
+            return """Short Answer: Hello! I'm CCR, your AI assistant for Physical AI & Humanoid Robotics.
+
+Deep Explanation: I'm designed to help you understand concepts related to Physical AI and Humanoid Robotics.
+
+Summary: I'm here to assist with your textbook questions!"""
+
+        elif any(keyword in query_lower for keyword in ["physical ai", "physical artificial intelligence"]):
+            return """Short Answer: Physical AI is a field that combines artificial intelligence with physical systems and robotics.
+
+Deep Explanation: Physical AI refers to AI systems that interact with the physical world through sensors and actuators, learning from physical interactions to improve performance. This interdisciplinary field combines elements of robotics, machine learning, and control theory to create systems that can perceive, reason, and act in physical environments.
+
+Summary: Physical AI bridges the gap between digital AI and physical systems, enabling robots to learn and adapt through physical interaction."""
+
+        elif any(keyword in query_lower for keyword in ["humanoid", "robotics", "humanoid robotics"]):
+            return """Short Answer: Humanoid robotics is the branch of robotics focused on creating robots with human-like form and capabilities.
+
+Deep Explanation: Humanoid robots are designed to mimic human appearance and behavior, often featuring bipedal locomotion, human-like limbs, and sometimes facial features. These robots are engineered to operate in human environments and interact naturally with humans, making them suitable for applications like assistance, healthcare, and social interaction.
+
+Summary: Humanoid robotics aims to create robots that can operate in human environments and interact naturally with humans."""
+
+        elif any(keyword in query_lower for keyword in ["what", "tell me", "explain"]):
+            return f"""Short Answer: I'm an AI assistant for the Physical AI & Humanoid Robotics textbook.
+
+Deep Explanation: Based on the context provided: {context or 'No specific context available'}
+
+Summary: I can help explain concepts related to Physical AI and Humanoid Robotics. Try asking about specific topics like "What is Physical AI?" or "Explain humanoid robotics."""
+
+        else:
+            return f"""Short Answer: I'm currently unable to connect to the AI service due to API limitations.
+
+Deep Explanation: The query you asked was: '{query}'. I should be able to help with questions about Physical AI & Humanoid Robotics, but I'm experiencing connectivity issues with the underlying AI service. This could be due to network issues, API key problems, or service unavailability.
+
+Summary: Please check your OpenAI API configuration. In the meantime, I recommend reviewing the textbook chapters related to your question."""
+
+    def ensure_response_format(self, response: str) -> str:
+        """
+        Ensures that the response follows the required format:
+        Short Answer, Deep Explanation, Summary
+        """
+        # Check if the response already follows the format
+        if ("Short Answer:" in response and
+            "Deep Explanation:" in response and
+            "Summary:" in response):
+            return response
+
+        # If not in the correct format, wrap it in the required format
+        lines = response.strip().split('\n')
+
+        # Extract the first meaningful sentence/paragraph as the short answer
+        if lines:
+            short_answer = lines[0].strip() if lines[0].strip() else "I've processed your request."
+        else:
+            short_answer = "I've processed your request."
+
+        # The full response becomes the deep explanation
+        deep_explanation = response.strip()
+
+        # Create a summary (first 100 characters or first sentence)
+        summary_parts = response.split('. ')
+        if summary_parts:
+            summary = (summary_parts[0] + '.').strip() if summary_parts[0].strip() else "Response processed."
+        else:
+            summary = "Response processed."
+
+        return f"""Short Answer: {short_answer}
+
+Deep Explanation: {deep_explanation}
+
+Summary: {summary}"""
 
 # Initialize the chatbot service
 chatbot_service = ChatbotService()

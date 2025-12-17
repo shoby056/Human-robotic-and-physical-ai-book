@@ -1,0 +1,98 @@
+.authContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 1rem;
+  background-color: #f5f5f5;
+}
+
+.authCard {
+  width: 100%;
+  max-width: 450px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.authCard h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.authCard p {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #666;
+}
+
+.toggleView {
+  text-align: center;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #eee;
+}
+
+.toggleView p {
+  margin: 0;
+  color: #666;
+}
+
+.toggleButton {
+  background: none;
+  border: none;
+  color: #007cba;
+  cursor: pointer;
+  font-weight: 500;
+  text-decoration: underline;
+  padding: 0;
+  margin-left: 0.25rem;
+}
+
+.toggleButton:hover {
+  color: #005a87;
+}
+
+.logoutButton, .homeButton {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logoutButton {
+  background-color: #f44336;
+  color: white;
+}
+
+.logoutButton:hover {
+  background-color: #d32f2f;
+}
+
+.homeButton {
+  background-color: #4caf50;
+  color: white;
+}
+
+.homeButton:hover {
+  background-color: #388e3c;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .authContainer {
+    padding: 0.5rem;
+  }
+
+  .authCard {
+    margin: 0.5rem;
+    padding: 1.5rem;
+  }
+}

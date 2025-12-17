@@ -1,18 +1,30 @@
 /**
  * Global CSS for Docusaurus
- * Works for both Light & Dark themes beautifully
+ * Premium Professional Design with Elegant Color Scheme
  */
 
 /* Light Theme Root Variables */
 :root {
-  /* Modern Primary Colors (Purple → Pink blend for gradients) */
-  --ifm-color-primary: #c752c3;
-  --ifm-color-primary-dark: #b247ad;
-  --ifm-color-primary-darker: #9e3f98;
-  --ifm-color-primary-darkest: #7c3377;
-  --ifm-color-primary-light: #d46cd2;
-  --ifm-color-primary-lighter: #de7edf;
-  --ifm-color-primary-lightest: #ebb0ea;
+  /* Premium Professional Colors (Neutral grays with elegant purple/cyan accents) */
+  --ifm-color-primary: #5d5fef;
+  --ifm-color-primary-dark: #4a4bcf;
+  --ifm-color-primary-darker: #3a3abf;
+  --ifm-color-primary-darkest: #2a2aae;
+  --ifm-color-primary-light: #6d6fef;
+  --ifm-color-primary-lighter: #7d7fff;
+  --ifm-color-primary-lightest: #a0a0ff;
+
+  /* Premium Neutral Base Colors */
+  --ifm-color-gray-0: #ffffff; /* pure white */
+  --ifm-color-gray-100: #f8fafc; /* off-white */
+  --ifm-color-gray-200: #f0f4f8;
+  --ifm-color-gray-300: #e2e8f0;
+  --ifm-color-gray-400: #c1c9d2;
+  --ifm-color-gray-500: #94a3b8;
+  --ifm-color-gray-600: #64748b;
+  --ifm-color-gray-700: #334155;
+  --ifm-color-gray-800: #1e293b;
+  --ifm-color-gray-900: #0f172a;
 
   /* Typography & Code */
   --ifm-code-font-size: 95%;
@@ -20,8 +32,13 @@
   /* Code Highlight BG */
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.07);
 
-  /* Soft Shadows for Cards */
-  --card-shadow-light: 0 6px 14px rgba(0, 0, 0, 0.1);
+  /* Premium Shadows for Cards */
+  --card-shadow-light: 0 10px 25px rgba(93, 95, 239, 0.08);
+  --card-shadow-hover: 0 15px 35px rgba(93, 95, 239, 0.15);
+
+  /* Premium Hero Background Gradients */
+  --ifm-hero-background-color: linear-gradient(135deg, #f8fafc 0%, #eef2ff 50%, #f0f4f8 100%);
+  --ifm-hero-background-color-dark: linear-gradient(135deg, #0f172a 0%, #1a2238 50%, #1e293b 100%);
 
   /* Smooth Animation */
   scroll-behavior: smooth;
@@ -29,40 +46,269 @@
 
 /* Dark Theme */
 [data-theme='dark'] {
-  /* Primary Colors optimized for dark mode */
-  --ifm-color-primary: #e98df5;
-  --ifm-color-primary-dark: #d977e8;
-  --ifm-color-primary-darker: #c268cf;
-  --ifm-color-primary-darkest: #a153ab;
-  --ifm-color-primary-light: #f3a6ff;
-  --ifm-color-primary-lighter: #f7bdff;
-  --ifm-color-primary-lightest: #fbe1ff;
+  /* Premium Colors optimized for dark mode */
+  --ifm-color-primary: #7d7fff;
+  --ifm-color-primary-dark: #6d6fef;
+  --ifm-color-primary-darker: #5d5fef;
+  --ifm-color-primary-darkest: #4a4bcf;
+  --ifm-color-primary-light: #8d8fff;
+  --ifm-color-primary-lighter: #9d9fff;
+  --ifm-color-primary-lightest: #b0b0ff;
+
+  /* Premium Neutral Base Colors for Dark */
+  --ifm-color-gray-0: #0f172a; /* near-black */
+  --ifm-color-gray-100: #1e293b;
+  --ifm-color-gray-200: #334155;
+  --ifm-color-gray-300: #475569;
+  --ifm-color-gray-400: #64748b;
+  --ifm-color-gray-500: #94a3b8;
+  --ifm-color-gray-600: #c1c9d2;
+  --ifm-color-gray-700: #e2e8f0;
+  --ifm-color-gray-800: #f0f4f8;
+  --ifm-color-gray-900: #f8fafc;
 
   /* Code highlight */
   --docusaurus-highlighted-code-line-bg: rgba(255, 255, 255, 0.12);
 
-  /* Softer card shadow on dark bg */
-  --card-shadow-light: 0 6px 18px rgba(255, 255, 255, 0.08);
+  /* Premium card shadow on dark bg */
+  --card-shadow-light: 0 10px 25px rgba(125, 127, 255, 0.1);
+  --card-shadow-hover: 0 15px 35px rgba(125, 127, 255, 0.2);
 }
 
 /* Make images smooth and responsive */
 img {
-  border-radius: 12px;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 img:hover {
-  transform: scale(1.01);
+  transform: scale(1.02);
+  box-shadow: var(--card-shadow-hover);
 }
 
 /* Smooth transitions globally */
 * {
-  transition: background-color 0.25s ease, color 0.25s ease;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* Global Card Style (used everywhere automatically) */
-.card,
+/* Premium Card Style with enhanced shadows and gradients */
+.card {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--ifm-color-primary), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
 .theme-doc-markdown a,
 .navbar__item {
-  transition: all 0.25s ease;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Premium button styles */
+.button {
+  border-radius: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em !important;
+  text-transform: none !important;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--ifm-color-primary), var(--ifm-color-primary-light));
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.button:hover::before {
+  opacity: 0.1;
+}
+
+/* Premium Hero Section Background */
+.premium-hero {
+  background: var(--ifm-hero-background-color) !important;
+}
+
+[data-theme='dark'] .premium-hero {
+  background: var(--ifm-hero-background-color-dark) !important;
+}
+
+/* Footer Links Layout - Equal Alignment and Spacing */
+.footer {
+  padding-top: 3rem !important;
+  padding-bottom: 2rem !important;
+}
+
+.footer__links {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+@media (min-width: 997px) {
+  .footer__links {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+}
+
+.footer__col {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+  min-width: 0;
+}
+
+@media (min-width: 997px) {
+  .footer__col {
+    margin-bottom: 0;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .footer__col:last-child {
+    align-items: flex-end;
+    text-align: right;
+  }
+}
+
+.footer__title {
+  text-align: center !important;
+  margin-bottom: 1rem;
+  color: var(--ifm-color-gray-100);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+@media (min-width: 997px) {
+  .footer__title {
+    text-align: left !important;
+  }
+
+  .footer__col:last-child .footer__title {
+    text-align: right !important;
+  }
+}
+
+.footer__item {
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+@media (min-width: 997px) {
+  .footer__item {
+    text-align: left;
+  }
+
+  .footer__col:last-child .footer__item {
+    text-align: right;
+  }
+}
+
+.footer__link-item {
+  padding: 0.25rem 0 !important;
+  margin: 0 !important;
+  text-align: center;
+  width: 100%;
+}
+
+@media (min-width: 997px) {
+  .footer__link-item {
+    text-align: left;
+  }
+
+  .footer__col:last-child .footer__link-item {
+    text-align: right;
+  }
+}
+
+.footer__link-item a {
+  font-size: 0.9rem;
+  color: var(--ifm-color-gray-300);
+  text-decoration: none;
+  padding: 0.5rem 0;
+  transition: all 0.2s ease;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+@media (min-width: 997px) {
+  .footer__link-item a {
+    text-align: left;
+    width: auto;
+  }
+
+  .footer__col:last-child .footer__link-item a {
+    text-align: right;
+  }
+}
+
+.footer__link-item a:hover {
+  color: var(--ifm-color-primary-light);
+  text-decoration: underline;
+}
+
+/* Dark Theme Footer Link Visibility */
+[data-theme='dark'] .footer__link-item a {
+  color: #e2e8f0 !important; /* Light gray for high contrast */
+}
+
+[data-theme='dark'] .footer__link-item a:hover {
+  color: #ffffff !important; /* White on hover for better visibility */
+}
+
+[data-theme='dark'] .footer__title {
+  color: #f1f5f9 !important; /* Light text for titles */
+}
+
+[data-theme='dark'] .footer__copyright {
+  color: #94a3b8 !important; /* Lighter gray for copyright */
+}
+
+/* Ensure consistent spacing and alignment */
+.footer--dark,
+.footer--light {
+  padding-top: 3rem;
+  padding-bottom: 2rem;
+}
+
+/* Footer copyright alignment */
+.footer__copyright {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--ifm-color-gray-800);
+  color: var(--ifm-color-gray-400);
+  font-size: 0.85rem;
 }

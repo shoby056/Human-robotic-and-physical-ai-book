@@ -3,10 +3,10 @@
 const getAPIBaseUrl = () => {
   if (typeof window !== 'undefined') {
     // Browser environment
-    return window.ENV?.REACT_APP_API_URL || 'http://localhost:8000';
+    return window.ENV?.REACT_APP_API_URL || 'http://localhost:8001';
   } else {
     // Server environment during build
-    return process?.env?.REACT_APP_API_URL || 'http://localhost:8000';
+    return process?.env?.REACT_APP_API_URL || 'http://localhost:8001';
   }
 };
 

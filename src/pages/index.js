@@ -60,116 +60,170 @@ export default function Home() {
     >
       <div
         style={{
-          padding: '50px 20px',
-          textAlign: 'center',
-          maxWidth: '1100px',
+          padding: '0 20px',
+          maxWidth: '1200px',
           margin: '0 auto',
+          fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
         }}
       >
-        {/* Title */}
-        <h1
-          style={{
-            fontSize: 'clamp(2.5rem, 5vw, 4rem)',
-            fontWeight: 'bold',
-            lineHeight: 1.2,
-            background: 'linear-gradient(90deg, #c752c3, #6a11cb)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-          }}
-        >
-          Physical AI & Humanoid Robotics
-        </h1>
-
-        {/* Subtitle */}
-        <p
-          style={{
-            fontSize: 'clamp(1rem, 2.5vw, 1.3rem)',
-            marginTop: '15px',
-            lineHeight: 1.6,
-            color: '#555',
-          }}
-        >
-          Your complete textbook for understanding the future of AI + Robotics.
-        </p>
-
-        {/* Header Image */}
-        <img
-          src="/img/robotic.jpg"
-          alt="Humanoid Robot"
-          style={{
-            width: 'clamp(300px, 70%, 700px)',
-            marginTop: '35px',
+        {/* Hero Section with Premium Background */}
+        <section className="premium-hero" style={{
+          textAlign: 'center',
+          padding: '100px 20px 80px',
+          marginBottom: '70px',
+          background: 'var(--ifm-hero-background-color)',
+          borderRadius: '20px',
+          position: 'relative',
+          overflow: 'hidden'
+        }}>
+          {/* Background pattern for light theme */}
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'radial-gradient(circle at 10% 20%, rgba(93, 95, 239, 0.05) 0%, transparent 20%)',
             borderRadius: '20px',
-            boxShadow: '0 15px 40px rgba(0,0,0,0.2)',
-            transition: 'transform 0.3s',
-          }}
-          onMouseOver={(e) => (e.currentTarget.style.transform = 'scale(1.03)')}
-          onMouseOut={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-        />
+            zIndex: 0
+          }}></div>
 
-        {/* Start Button */}
-        <div style={{ marginTop: '40px' }}>
-          <Link
-            to="/docs/chapter-select"
-            style={{
-              display: 'inline-block',
-              padding: '16px 30px',
-              fontSize: 'clamp(1rem, 2.5vw, 1.2rem)',
-              background: 'linear-gradient(90deg, #c752c3, #6a11cb)',
-              color: '#fff',
-              borderRadius: '12px',
-              textDecoration: 'none',
-              fontWeight: '600',
-              boxShadow: '0 8px 20px rgba(0,0,0,0.2)',
-              transition: 'all 0.3s ease',
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.transform = 'translateY(-3px)';
-              e.currentTarget.style.boxShadow = '0 12px 25px rgba(0,0,0,0.3)';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 8px 20px rgba(0,0,0,0.2)';
-            }}
-          >
-            📘 Start Reading the Book
-          </Link>
-        </div>
+          <div style={{
+            position: 'absolute',
+            top: '-50px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '120px',
+            height: '4px',
+            background: 'linear-gradient(90deg, var(--ifm-color-primary), var(--ifm-color-primary-light), var(--ifm-color-primary))',
+            borderRadius: '2px',
+            opacity: '0.6',
+            zIndex: 1
+          }}></div>
 
-        {/* Modules Section */}
-        <div style={{ marginTop: '60px', paddingTop: '50px', borderTop: '1px solid #eee' }}>
-          <h2
-            style={{
-              fontSize: '2.2rem',
-              textAlign: 'center',
-              marginBottom: '1.5rem',
-              color: '#2c3e50',
-            }}
-          >
-            Course Modules
-          </h2>
-          <p
-            style={{
-              textAlign: 'center',
-              fontSize: '1.1rem',
-              color: '#7f8c8d',
-              marginBottom: '3rem',
-              maxWidth: '800px',
-              marginLeft: 'auto',
-              marginRight: 'auto',
-              lineHeight: '1.6',
-            }}
-          >
-            Explore all modules of the Physical AI & Humanoid Robotics textbook.
-            Each module covers essential topics for mastering robotics and AI concepts.
-          </p>
+          <div style={{ position: 'relative', zIndex: 2 }}>
+            <h1
+              style={{
+                fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
+                fontWeight: '800',
+                lineHeight: '1.1',
+                background: 'linear-gradient(124deg, var(--ifm-color-primary), var(--ifm-color-primary-light), var(--ifm-color-primary))',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                marginBottom: '25px',
+                letterSpacing: '-0.03em',
+                position: 'relative'
+              }}
+            >
+              Physical AI & Humanoid Robotics
+            </h1>
 
-          <div className="row">
+            <p
+              style={{
+                fontSize: 'clamp(1.1rem, 2.5vw, 1.4rem)',
+                lineHeight: '1.7',
+                color: 'var(--ifm-color-gray-600)',
+                maxWidth: '750px',
+                margin: '0 auto 40px',
+                letterSpacing: '0.01em'
+              }}
+            >
+              Your complete textbook for understanding the future of AI + Robotics.
+              Master the cutting-edge technologies powering the next generation of intelligent machines.
+            </p>
+
+            <div style={{ marginTop: '35px' }}>
+              <Link
+                to="/docs/chapter-select"
+                style={{
+                  display: 'inline-block',
+                  padding: '18px 42px',
+                  fontSize: '1.15rem',
+                  background: 'linear-gradient(124deg, var(--ifm-color-primary), var(--ifm-color-primary-light))',
+                  color: 'white',
+                  borderRadius: '12px',
+                  textDecoration: 'none',
+                  fontWeight: '600',
+                  transition: 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                  boxShadow: 'var(--card-shadow-light)',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  letterSpacing: '0.02em'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px) scale(1.02)';
+                  e.currentTarget.style.boxShadow = 'var(--card-shadow-hover)';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                  e.currentTarget.style.boxShadow = 'var(--card-shadow-light)';
+                }}
+              >
+                Start Reading the Book
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Modules Section - remains neutral and clean */}
+        <section style={{
+          padding: '0 20px 80px'
+        }}>
+          <div style={{
+            textAlign: 'center',
+            marginBottom: '60px',
+            position: 'relative'
+          }}>
+            <div style={{
+              position: 'absolute',
+              top: '-30px',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              width: '80px',
+              height: '3px',
+              background: 'linear-gradient(90deg, var(--ifm-color-primary), var(--ifm-color-primary-light))',
+              borderRadius: '2px',
+              opacity: '0.4'
+            }}></div>
+
+            <h2
+              style={{
+                fontSize: 'clamp(1.8rem, 4vw, 2.2rem)',
+                fontWeight: '700',
+                background: 'linear-gradient(124deg, var(--ifm-color-primary), var(--ifm-color-primary-light))',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                marginBottom: '20px',
+                lineHeight: '1.3',
+                position: 'relative'
+              }}
+            >
+              Course Modules
+            </h2>
+            <p
+              style={{
+                fontSize: '1.1rem',
+                color: 'var(--ifm-color-gray-600)',
+                maxWidth: '700px',
+                margin: '0 auto',
+                lineHeight: '1.7'
+              }}
+            >
+              Explore all modules of the Physical AI & Humanoid Robotics textbook.
+              Each module covers essential topics for mastering robotics and AI concepts.
+            </p>
+          </div>
+
+          <div className="row" style={{
+            gap: '2.5rem',
+            justifyContent: 'center',
+            alignItems: 'stretch'
+          }}>
             {modulesData.map((module) => (
               <ModuleCard key={module.id} module={module} />
             ))}
           </div>
-        </div>
+        </section>
       </div>
     </Layout>
   );
