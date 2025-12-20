@@ -2,12 +2,18 @@
 // For Docusaurus, use a static configuration with fallbacks for safety
 const getAPIBaseUrl = () => {
   if (typeof window !== 'undefined') {
-    // Browser environment - use relative path for proxy during development
-    // This allows the Docusaurus proxy to forward requests to the backend
-    return process.env.NODE_ENV === 'development' ? '' : (window.ENV?.REACT_APP_API_URL || 'http://localhost:8001');
+    // Browser environment
+    // Use the Hugging Face Space backend URL in production
+    if (process.env.NODE_ENV === 'development') {
+      // During development, use relative path for proxy
+      return '';
+    } else {
+      // In production, use the Hugging Face Space backend
+      return 'https://shoby056-deploy-book.hf.space';
+    }
   } else {
     // Server environment during build
-    return process?.env?.REACT_APP_API_URL || 'http://localhost:8001';
+    return process?.env?.REACT_APP_API_URL || 'https://shoby056-deploy-book.hf.space';
   }
 };
 
