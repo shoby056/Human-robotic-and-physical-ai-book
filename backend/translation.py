@@ -1,7 +1,7 @@
 from typing import List, Dict, Optional
 import requests
 import os
-from googletrans import Translator
+from deep_translator import GoogleTranslator
 import logging
 
 # Configure logging
@@ -10,7 +10,6 @@ logger = logging.getLogger(__name__)
 
 class TranslationService:
     def __init__(self):
-        self.translator = Translator()
         self.supported_languages = {
             'en': 'English',
             'ur': 'Urdu',
@@ -41,15 +40,10 @@ class TranslationService:
             if source_lang not in self.supported_languages:
                 raise ValueError(f"Source language '{source_lang}' is not supported")
 
-            # For Urdu translation, we specifically want to handle it well
-            if target_lang == 'ur':
-                # Using Google Translate API for Urdu translation
-                result = self.translator.translate(text, src=source_lang, dest=target_lang)
-                return result.text
-            else:
-                # For other languages
-                result = self.translator.translate(text, src=source_lang, dest=target_lang)
-                return result.text
+            # Using deep-translator for translation
+            translator = GoogleTranslator(source=source_lang, target=target_lang)
+            translated_text = translator.translate(text)
+            return translated_text
 
         except Exception as e:
             logger.error(f"Translation error: {str(e)}")
