@@ -1,0 +1,299 @@
+.bookContainer {
+  display: flex;
+  min-height: 80vh;
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 1rem;
+  height: fit-content;
+  align-self: flex-start;
+}
+
+.sidebar h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.chapterItem {
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.chapterItem:hover {
+  background-color: #e9ecef;
+}
+
+.chapterItem.active {
+  background-color: #007cba;
+  color: white;
+  border-color: #007cba;
+}
+
+.content {
+  flex: 1;
+  max-width: 800px;
+}
+
+.chapterHeader {
+  margin-bottom: 2rem;
+}
+
+.chapterHeader h1 {
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.chapterNavigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.navButton {
+  padding: 0.5rem 1rem;
+  background-color: #007cba;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.navButton:hover:not(:disabled) {
+  background-color: #005a87;
+}
+
+.navButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.chapterContent {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+  line-height: 1.6;
+}
+
+.personalNote {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: #e8f4fd;
+  border-left: 4px solid #007cba;
+  border-radius: 4px;
+}
+
+.personalNote h4 {
+  margin-top: 0;
+  color: #007cba;
+}
+
+.highlightsSection {
+  margin-top: 1.5rem;
+}
+
+.highlightsSection h4 {
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.highlightItem {
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  background-color: #fff8e1;
+  border-left: 4px solid #ffc107;
+  border-radius: 4px;
+}
+
+.imagesSection {
+  margin-top: 1.5rem;
+}
+
+.imagesSection h4 {
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.imageGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.personalImage {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  border: 1px solid #dee2e6;
+}
+
+.personalizationPanel {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+}
+
+.personalizationPanel h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.personalizationForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formGroup label {
+  font-weight: 500;
+  color: #555;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.fileInput {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.addButton {
+  align-self: flex-start;
+  padding: 0.5rem 1rem;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.addButton:hover {
+  background-color: #218838;
+}
+
+.selectedImagePreview {
+  margin-top: 0.5rem;
+}
+
+.imagePreview {
+  max-width: 200px;
+  max-height: 200px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.loginPrompt {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.loginPrompt a {
+  color: #007cba;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.loginPrompt a:hover {
+  text-decoration: underline;
+}
+
+.navigationLinks {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #dee2e6;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.navigationLinks a {
+  padding: 0.5rem 1rem;
+  background-color: #007cba;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.navigationLinks a:hover {
+  background-color: #005a87;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .bookContainer {
+    flex-direction: column;
+    padding: 0.5rem;
+  }
+
+  .sidebar {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .content {
+    max-width: 100%;
+  }
+
+  .chapterNavigation {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .imageGrid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 0.5rem;
+  }
+}

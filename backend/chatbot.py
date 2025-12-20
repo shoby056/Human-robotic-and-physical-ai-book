@@ -4,7 +4,11 @@ from typing import List, Optional, Dict, Any, Union
 import os
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import PromptTemplate
-from .database import qdrant_client, QDRANT_COLLECTION_NAME
+try:
+    from .database import qdrant_client, QDRANT_COLLECTION_NAME
+except ImportError:
+    # Fallback for when running as a standalone module
+    from database import qdrant_client, QDRANT_COLLECTION_NAME
 from qdrant_client.http import models
 from sentence_transformers import SentenceTransformer
 import openai

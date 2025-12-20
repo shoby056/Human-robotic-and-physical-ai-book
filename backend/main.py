@@ -1,22 +1,29 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-# Import routers using relative imports to work correctly when running the module
+# Import routers with improved fallback logic
 try:
     from .chatbot import router as chatbot_router
     from .auth import router as auth_router
 except ImportError:
     # Fallback for absolute imports when running from project root
     try:
-        from src.backend.chatbot import router as chatbot_router
-        from src.backend.auth import router as auth_router
+        from backend.chatbot import router as chatbot_router
+        from backend.auth import router as auth_router
     except ImportError:
         # Last resort - direct import for standalone execution
         import sys
         import os
-        sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
-        from backend.chatbot import router as chatbot_router
-        from backend.auth import router as auth_router
+        # Add the parent directory to the path so imports work
+        parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        if parent_dir not in sys.path:
+            sys.path.insert(0, parent_dir)
+        # Also add the backend directory to the path
+        backend_dir = os.path.dirname(os.path.abspath(__file__))
+        if backend_dir not in sys.path:
+            sys.path.insert(0, backend_dir)
+        from chatbot import router as chatbot_router
+        from auth import router as auth_router
 
 app = FastAPI(title="Physical AI & Humanoid Robotics Textbook API", version="1.0.0")
 

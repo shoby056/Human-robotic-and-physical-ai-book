@@ -50,12 +50,12 @@ const config = {
   // Static directories configuration
   staticDirectories: ['static'],
 
-  // Custom fields for development server configuration for API proxy
+  // Development server proxy configuration for API requests
   customFields: {
     devServer: {
       proxy: {
         '/api': {
-          target: 'http://localhost:8000',
+          target: 'http://localhost:8001',
           changeOrigin: true,
           secure: false,
         },
@@ -164,6 +164,7 @@ const config = {
         darkTheme: require('prism-react-renderer').themes.dracula,
       },
     }),
+
 };
 
 module.exports = config;

@@ -1,0 +1,98 @@
+.chapterSelectorContainer {
+  margin-top: 40px;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.startReadingButton {
+  display: inline-block;
+  padding: 14px 26px;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  background: #0066ff;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  width: clamp(180px, 60%, 260px);
+  max-width: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.startReadingButton:hover {
+  background: #0056cc;
+}
+
+.chaptersList {
+  margin-top: 30px;
+  width: 100%;
+}
+
+.chaptersTitle {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #25c2a0;
+}
+
+.chaptersGrid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.chapterItem {
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.chapterItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.chapterLink {
+  display: block;
+  padding: 20px;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+}
+
+.chapterTitle {
+  margin: 0 0 10px 0;
+  color: #0066ff;
+  font-size: 1.2rem;
+}
+
+.chapterDescription {
+  margin: 0 0 15px 0;
+  color: #6c757d;
+  line-height: 1.5;
+}
+
+.chapterReadMore {
+  display: inline-block;
+  color: #0066ff;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .chaptersGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .chapterSelectorContainer {
+    padding: 0 15px;
+  }
+}

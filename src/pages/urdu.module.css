@@ -1,0 +1,97 @@
+.urduTranslationPage {
+  padding: 2rem 0;
+  min-height: 80vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.header h1 {
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.chapterList {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.chapterList h2 {
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.chapterItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+}
+
+.chapterInfo {
+  flex: 1;
+  margin-right: 1rem;
+}
+
+.chapterItem h3 {
+  margin: 0 0 0.5rem 0;
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.chapterDescription {
+  margin: 0.5rem 0;
+  color: #666;
+}
+
+.chapterOriginalTitle {
+  margin: 0.5rem 0 0 0;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.chapterLink {
+  padding: 0.5rem 1rem;
+  background-color: #007cba;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  align-self: center;
+  transition: background-color 0.3s ease;
+}
+
+.chapterLink:hover {
+  background-color: #005a87;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .urduTranslationPage {
+    padding: 1rem 0;
+  }
+
+  .chapterItem {
+    flex-direction: column;
+  }
+
+  .chapterInfo {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+
+  .chapterLink {
+    align-self: flex-start;
+  }
+}
