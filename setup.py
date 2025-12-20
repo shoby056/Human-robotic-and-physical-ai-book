@@ -21,6 +21,6 @@ setup(
         "tiktoken==0.5.1",
         "numpy==1.24.3",
         "requests==2.31.0",
-        "deep-translator==1.12.0",
+        "deep-translator==1.11.4",
     ],
 )
