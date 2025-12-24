@@ -23,7 +23,7 @@ const config = {
 
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'ur'],
+    locales: ['en'],
   },
 
   presets: [
@@ -89,11 +89,6 @@ const config = {
           {
             to: '/personalized',
             label: 'Personalized',
-            position: 'left',
-          },
-          {
-            to: '/urdu',
-            label: 'Urdu',
             position: 'left',
           },
           {

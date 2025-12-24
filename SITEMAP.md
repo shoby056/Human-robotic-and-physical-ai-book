@@ -6,10 +6,6 @@
 - `/signup` - User registration
 - `/signin` - User login
 - `/profile` - User profile (requires authentication)
-- `/urdu` - Urdu translation index
-- `/urdu-chapter-1` - Urdu Chapter 1
-- `/urdu-chapter-2` - Urdu Chapter 2
-- `/urdu-chapter-3` - Urdu Chapter 3
 - `/personalized` - Personalized book index (requires authentication)
 - `/personalized-chapter-1` - Personalized Chapter 1 (requires authentication)
 - `/personalized-chapter-2` - Personalized Chapter 2 (requires authentication)
@@ -22,10 +18,6 @@
 - `/signup` - Clean, responsive registration form with validation
 - `/signin` - Secure login form with error handling
 - `/profile` - User profile management with edit capabilities
-
-### Urdu Translation Pages
-- `/urdu` - Index page listing all translated chapters
-- `/urdu-chapter-[id]` - Individual chapters with RTL support and proper Urdu formatting
 
 ### Personalized Content Pages
 - `/personalized` - Index page for personalized book content
